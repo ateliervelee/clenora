@@ -5,38 +5,50 @@
         
         <div class="grid grid-2">
             <div class="benefit-item">
-                <div class="benefit-icon">✓</div>
-                <h3>Trusted & Insured</h3>
+                <div class="benefit-header">
+                    <div class="benefit-icon">✓</div>
+                    <h3>Trusted & Insured</h3>
+                </div>
                 <p>Fully licensed and insured for your peace of mind. Your property is protected.</p>
             </div>
             
             <div class="benefit-item">
-                <div class="benefit-icon">🌿</div>
-                <h3>Eco-Friendly Products</h3>
+                <div class="benefit-header">
+                    <div class="benefit-icon">🌿</div>
+                    <h3>Eco-Friendly Products</h3>
+                </div>
                 <p>We use environmentally safe cleaning products that are gentle on your home and the planet.</p>
             </div>
             
             <div class="benefit-item">
-                <div class="benefit-icon">⏰</div>
-                <h3>Flexible Scheduling</h3>
+                <div class="benefit-header">
+                    <div class="benefit-icon">⏰</div>
+                    <h3>Flexible Scheduling</h3>
+                </div>
                 <p>We work around your schedule. Book cleaning services at times that suit you best.</p>
             </div>
             
             <div class="benefit-item">
-                <div class="benefit-icon">⭐</div>
-                <h3>Experienced Team</h3>
+                <div class="benefit-header">
+                    <div class="benefit-icon">⭐</div>
+                    <h3>Experienced Team</h3>
+                </div>
                 <p>Our professional cleaners are trained, background-checked, and dedicated to excellence.</p>
             </div>
             
             <div class="benefit-item">
-                <div class="benefit-icon">💰</div>
-                <h3>Transparent Pricing</h3>
+                <div class="benefit-header">
+                    <div class="benefit-icon">💰</div>
+                    <h3>Transparent Pricing</h3>
+                </div>
                 <p>No hidden fees. Clear, upfront pricing so you know exactly what you're paying for.</p>
             </div>
             
             <div class="benefit-item">
-                <div class="benefit-icon">😊</div>
-                <h3>100% Satisfaction</h3>
+                <div class="benefit-header">
+                    <div class="benefit-icon">😊</div>
+                    <h3>100% Satisfaction</h3>
+                </div>
                 <p>Not happy? We'll come back and fix it. Your satisfaction is our guarantee.</p>
             </div>
         </div>
@@ -45,10 +57,14 @@
 
 <style>
 .benefit-item {
-    display: flex;
-    gap: var(--spacing-md);
-    align-items: flex-start;
     padding: var(--spacing-md);
+}
+
+.benefit-header {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
 }
 
 .benefit-icon {
@@ -66,22 +82,30 @@
 }
 
 .benefit-item h3 {
-    margin-bottom: var(--spacing-xs);
+    margin: 0;
     color: var(--color-text);
+    flex: 1;
 }
 
 .benefit-item p {
-    margin-bottom: 0;
+    margin: 0;
+    padding-left: calc(48px + var(--spacing-md));
 }
 
 @media (max-width: 768px) {
-    .benefit-item {
+    .benefit-header {
         flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-sm);
+    }
+    
+    .benefit-item h3 {
         text-align: center;
     }
     
-    .benefit-icon {
-        margin: 0 auto;
+    .benefit-item p {
+        padding-left: 0;
+        text-align: center;
     }
 }
 </style>
