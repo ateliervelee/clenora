@@ -1,0 +1,70 @@
+<section id="how-it-works" class="section">
+    <div class="container">
+        <h2 class="section-title">How It Works</h2>
+        <p class="section-subtitle">Getting your apartment cleaned is simple and hassle-free</p>
+        
+        <div class="steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Book Online</h3>
+                <p>Fill out our quick contact form or give us a call. Tell us about your cleaning needs and preferred date.</p>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>We Clean</h3>
+                <p>Our professional team arrives on time with all equipment and eco-friendly supplies. We'll clean every corner.</p>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Enjoy</h3>
+                <p>Relax in your spotless apartment. We guarantee satisfaction, or we'll come back to make it right.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.step {
+    text-align: center;
+    padding: var(--spacing-md);
+}
+
+.step-number {
+    width: 64px;
+    height: 64px;
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    color: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-2xl);
+    font-weight: bold;
+    margin: 0 auto var(--spacing-md);
+}
+
+.step h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.step p {
+    margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+    .steps {
+        grid-template-columns: 1fr;
+    }
+}
+</style>

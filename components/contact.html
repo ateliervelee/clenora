@@ -1,0 +1,138 @@
+<section id="contact" class="section" style="background-color: var(--color-grey-light);">
+    <div class="container">
+        <h2 class="section-title">Get Your Free Quote</h2>
+        <p class="section-subtitle">Contact us today to schedule your cleaning service</p>
+        
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h3>Contact Information</h3>
+                <div class="contact-item">
+                    <strong>Phone:</strong>
+                    <a href="tel:+1234567890">+1 (234) 567-890</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Email:</strong>
+                    <a href="mailto:info@cleanora.eu">info@cleanora.eu</a>
+                </div>
+                <div class="contact-item">
+                    <strong>Service Area:</strong>
+                    <span>Available throughout the region</span>
+                </div>
+            </div>
+            
+            <form class="contact-form" id="contact-form">
+                <div class="form-group">
+                    <label for="name" class="form-label">Name</label>
+                    <input type="text" id="name" name="name" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="tel" id="phone" name="phone" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="service" class="form-label">Service Type</label>
+                    <select id="service" name="service" class="form-input" required>
+                        <option value="">Select a service</option>
+                        <option value="deep-cleaning">Deep Cleaning</option>
+                        <option value="regular-maintenance">Regular Maintenance</option>
+                        <option value="move-in-out">Move-In/Out Cleaning</option>
+                        <option value="window-cleaning">Window Cleaning</option>
+                        <option value="kitchen-deep-clean">Kitchen Deep Clean</option>
+                        <option value="bathroom-sanitization">Bathroom Sanitization</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" name="message" class="form-textarea" rows="5"></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Request</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<style>
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--spacing-xl);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.contact-info {
+    background-color: var(--color-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.contact-info h3 {
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+}
+
+.contact-item {
+    margin-bottom: var(--spacing-md);
+}
+
+.contact-item strong {
+    display: block;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-xs);
+}
+
+.contact-item a {
+    color: var(--color-primary);
+    font-weight: 500;
+}
+
+.contact-item span {
+    color: var(--color-text-light);
+}
+
+.contact-form {
+    background-color: var(--color-white);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+select.form-input {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%232563eb' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    padding-right: 2.5rem;
+}
+
+@media (max-width: 768px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contact-form');
+    if (form) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // In a real implementation, you would send this data to a server
+            alert('Thank you for your request! We will contact you soon.');
+            form.reset();
+        });
+    }
+});
+</script>

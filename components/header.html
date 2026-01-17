@@ -1,0 +1,81 @@
+<header class="header">
+    <div class="container">
+        <nav class="nav">
+            <div class="nav-brand">
+                <a href="#hero">Cleanora</a>
+            </div>
+            <div class="nav-links">
+                <a href="#services">Services</a>
+                <a href="#benefits">Why Us</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#contact" class="btn btn-primary">Get Quote</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<style>
+.header {
+    background-color: var(--color-white);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: var(--spacing-sm) 0;
+}
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand a {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.nav-links a {
+    color: var(--color-text);
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover:not(.btn) {
+    color: var(--color-primary);
+}
+
+.nav-links a.btn {
+    color: var(--color-white) !important;
+}
+
+.nav-links a.btn:hover,
+.nav-links a.btn:focus {
+    color: var(--color-white) !important;
+}
+
+@media (max-width: 768px) {
+    .nav {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--spacing-sm);
+    }
+    
+    .nav-links a.btn {
+        width: 100%;
+    }
+}
+</style>
