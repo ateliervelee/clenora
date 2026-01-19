@@ -20,7 +20,7 @@
                 </div>
             </div>
             
-            <form class="contact-form" id="contact-form">
+            <form class="contact-form" id="contact-form" target="_blank" action="https://formsubmit.co/info@clenora.eu" method="POST">
                 <div class="form-group">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" id="name" name="name" class="form-input" required>
@@ -52,8 +52,14 @@
                 
                 <div class="form-group">
                     <label for="message" class="form-label">Message</label>
-                    <textarea id="message" name="message" class="form-textarea" rows="5"></textarea>
+                    <textarea id="message" name="message" class="form-textarea" rows="5" placeholder="Tell us about your cleaning needs..."></textarea>
                 </div>
+                
+                <!-- Hidden fields for FormSubmit -->
+                <input type="hidden" name="_subject" value="New contact form submission from Clenora website">
+                <input type="hidden" name="_next" value="thank_you.html">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
                 
                 <button type="submit" class="btn btn-primary" style="width: 100%;">Send Request</button>
             </form>
@@ -116,6 +122,7 @@ select.form-input {
     padding-right: 2.5rem;
 }
 
+
 @media (max-width: 768px) {
     .contact-wrapper {
         grid-template-columns: 1fr;
@@ -123,16 +130,3 @@ select.form-input {
 }
 </style>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('contact-form');
-    if (form) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            // In a real implementation, you would send this data to a server
-            alert('Thank you for your request! We will contact you soon.');
-            form.reset();
-        });
-    }
-});
-</script>
