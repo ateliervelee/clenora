@@ -51,6 +51,12 @@
     font-size: var(--font-size-2xl);
     font-weight: bold;
     margin: 0 auto var(--spacing-md);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.step:hover .step-number {
+    transform: scale(1.15) rotate(8deg);
 }
 
 .step h3 {
