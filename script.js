@@ -1,3 +1,35 @@
+// Replace {{key}} placeholders with strings from strings.js
+function replacePlaceholders(html) {
+    if (typeof STRINGS === 'undefined') return html;
+    return html.replace(/\{\{\s*([a-z0-9_]+)\s*\}\}/gi, (_, key) => {
+        const k = key.trim();
+        return STRINGS[k] !== undefined ? STRINGS[k] : '{{' + k + '}}';
+    });
+}
+
+// Replace {{key}} in a DOM node (text content and attributes) - for static pages like thank_you
+function replacePlaceholdersInNode(node) {
+    if (!node) return;
+    if (typeof STRINGS === 'undefined') return;
+    if (node.nodeType === Node.TEXT_NODE) {
+        node.textContent = node.textContent.replace(/\{\{\s*([a-z0-9_]+)\s*\}\}/gi, (_, key) => {
+            const k = key.trim();
+            return STRINGS[k] !== undefined ? STRINGS[k] : '{{' + k + '}}';
+        });
+        return;
+    }
+    if (node.nodeType === Node.ELEMENT_NODE) {
+        Array.from(node.attributes || []).forEach(attr => {
+            attr.value = attr.value.replace(/\{\{\s*([a-z0-9_]+)\s*\}\}/gi, (_, key) => {
+                const k = key.trim();
+                return STRINGS[k] !== undefined ? STRINGS[k] : '{{' + k + '}}';
+            });
+        });
+        node.childNodes.forEach(replacePlaceholdersInNode);
+    }
+}
+window.replacePlaceholdersInNode = replacePlaceholdersInNode;
+
 // Component injection system
 async function loadComponent(containerId, componentPath) {
     try {
@@ -5,7 +37,8 @@ async function loadComponent(containerId, componentPath) {
         if (!response.ok) {
             throw new Error(`Failed to load component: ${componentPath} - Status: ${response.status}`);
         }
-        const html = await response.text();
+        let html = await response.text();
+        html = replacePlaceholders(html);
         const container = document.getElementById(containerId);
         if (container) {
             container.innerHTML = html;

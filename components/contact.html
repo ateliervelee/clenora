@@ -1,68 +1,68 @@
 <section id="contact" class="section" style="background-color: var(--color-grey-light);">
     <div class="container">
-        <h2 class="section-title">Get Your Free Quote</h2>
-        <p class="section-subtitle">Contact us today to schedule your cleaning service</p>
+        <h2 class="section-title">{{contact_title}}</h2>
+        <p class="section-subtitle">{{contact_subtitle}}</p>
         
         <div class="contact-wrapper">
             <div class="contact-info">
-                <h3>Contact Information</h3>
+                <h3>{{contact_info_heading}}</h3>
                 <div class="contact-item">
-                    <strong>Phone:</strong>
+                    <strong>{{contact_phone_label}}</strong>
                     <a href="tel:+385958181184">+385 (95) 8181-184</a>
                 </div>
                 <div class="contact-item">
-                    <strong>Email:</strong>
+                    <strong>{{contact_email_label}}</strong>
                     <a href="mailto:info@clenora.eu">info@clenora.eu</a>
                 </div>
                 <div class="contact-item">
-                    <strong>Service Area:</strong>
-                    <span>Available throughout the region</span>
+                    <strong>{{contact_area_label}}</strong>
+                    <span>{{contact_area_text}}</span>
                 </div>
             </div>
             
             <form class="contact-form" id="contact-form" target="_blank" action="https://formsubmit.co/info@clenora.eu" method="POST">
                 <div class="form-group">
-                    <label for="name" class="form-label">Name</label>
+                    <label for="name" class="form-label">{{form_name_label}}</label>
                     <input type="text" id="name" name="name" class="form-input" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="email" class="form-label">Email</label>
+                    <label for="email" class="form-label">{{form_email_label}}</label>
                     <input type="email" id="email" name="email" class="form-input" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="phone" class="form-label">Phone</label>
+                    <label for="phone" class="form-label">{{form_phone_label}}</label>
                     <input type="tel" id="phone" name="phone" class="form-input" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="service" class="form-label">Service Type</label>
+                    <label for="service" class="form-label">{{form_service_label}}</label>
                     <select id="service" name="service" class="form-input" required>
-                        <option value="">Select a service</option>
-                        <option value="apartment-cleaning">Apartment Cleaning</option>
-                        <option value="deep-cleaning">Deep Cleaning</option>
-                        <option value="regular-maintenance">Regular Maintenance</option>
-                        <option value="move-in-out">Move-In/Out Cleaning</option>
-                        <option value="window-cleaning">Window Cleaning</option>
-                        <option value="kitchen-deep-clean">Kitchen Deep Clean</option>
-                        <option value="bathroom-sanitization">Bathroom Sanitization</option>
-                        <option value="other">Other</option>
+                        <option value="">{{form_service_placeholder}}</option>
+                        <option value="apartment-cleaning">{{form_option_apartment}}</option>
+                        <option value="deep-cleaning">{{form_option_deep}}</option>
+                        <option value="regular-maintenance">{{form_option_regular}}</option>
+                        <option value="move-in-out">{{form_option_move}}</option>
+                        <option value="window-cleaning">{{form_option_window}}</option>
+                        <option value="kitchen-deep-clean">{{form_option_kitchen}}</option>
+                        <option value="bathroom-sanitization">{{form_option_bathroom}}</option>
+                        <option value="other">{{form_option_other}}</option>
                     </select>
                 </div>
                 
                 <div class="form-group">
-                    <label for="message" class="form-label">Message</label>
-                    <textarea id="message" name="message" class="form-textarea" rows="5" placeholder="Tell us about your cleaning needs..."></textarea>
+                    <label for="message" class="form-label">{{form_message_label}}</label>
+                    <textarea id="message" name="message" class="form-textarea" rows="5" placeholder="{{form_message_placeholder}}"></textarea>
                 </div>
                 
                 <!-- Hidden fields for FormSubmit -->
-                <input type="hidden" name="_subject" value="New contact form submission from Clenora website">
+                <input type="hidden" name="_subject" value="{{contact_form_subject}}">
                 <input type="hidden" name="_next" value="https://clenora.eu/thank_you.html">
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_template" value="table">
                 
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Request</button>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">{{form_submit}}</button>
             </form>
         </div>
     </div>
@@ -130,4 +130,3 @@ select.form-input {
     }
 }
 </style>
-

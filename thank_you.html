@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Thank you for contacting Clenora - Professional apartment cleaning services.">
-    <title>Thank You - Clenora</title>
+    <meta name="description" content="Hvala što ste kontaktirali Clenoru - Profesionalno čišćenje stanova.">
+    <title>Hvala vam - Clenora</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -15,19 +15,19 @@
         <div class="container">
             <div class="thank-you-card">
                 <div class="thank-you-icon">✓</div>
-                <h1>Thank You!</h1>
-                <p>Your message has been <span class="highlight">successfully sent</span>. We appreciate you taking the time to contact us!</p>
+                <h1>{{thankyou_title}}</h1>
+                <p>{{thankyou_message_lead}}<span class="highlight">{{thankyou_highlight}}</span>{{thankyou_message_tail}}</p>
                 
                 <div class="response-info">
-                    <h3>📧 What happens next?</h3>
-                    <p>We've received your message and will respond within 24 hours. Our team will review your inquiry and get back to you as soon as possible.</p>
+                    <h3>{{thankyou_next_title}}</h3>
+                    <p>{{thankyou_next_desc}}</p>
                 </div>
 
-                <p>In the meantime, feel free to explore our website or contact us directly if you have any urgent questions.</p>
+                <p>{{thankyou_meanwhile}}</p>
 
                 <div class="action-buttons">
-                    <a href="index.html" class="btn btn-primary">Back to Home</a>
-                    <a href="index.html#contact" class="btn btn-secondary">Send Another Message</a>
+                    <a href="index.html" class="btn btn-primary">{{thankyou_back_home}}</a>
+                    <a href="index.html#contact" class="btn btn-secondary">{{thankyou_another_message}}</a>
                 </div>
             </div>
         </div>
@@ -36,19 +36,21 @@
     <!-- Footer will be loaded here -->
     <div id="footer-container"></div>
 
+    <!-- Locale: strings.js = English, strings-hr.js = Croatian -->
+    <script src="strings-hr.js"></script>
     <script src="script.js"></script>
     <script>
-        // Load header and footer components
+        // Load header and footer components, then replace placeholders in static content
         document.addEventListener('DOMContentLoaded', async () => {
             const loadComponent = async (containerId, componentPath) => {
                 try {
                     const response = await fetch(componentPath);
                     if (!response.ok) throw new Error(`Failed to load: ${componentPath}`);
-                    const html = await response.text();
+                    let html = await response.text();
+                    html = typeof replacePlaceholders === 'function' ? replacePlaceholders(html) : html;
                     const container = document.getElementById(containerId);
                     if (container) {
                         container.innerHTML = html;
-                        // Execute scripts within loaded component
                         const scripts = container.querySelectorAll('script');
                         scripts.forEach(oldScript => {
                             const newScript = document.createElement('script');
@@ -68,6 +70,10 @@
                 loadComponent('header-container', 'components/header.html'),
                 loadComponent('footer-container', 'components/footer.html')
             ]);
+            // Replace {{key}} in static thank-you content
+            if (typeof replacePlaceholdersInNode === 'function') {
+                replacePlaceholdersInNode(document.body);
+            }
         });
     </script>
 </body>
