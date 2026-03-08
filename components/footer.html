@@ -2,8 +2,10 @@
     <div class="container">
         <div class="footer-content">
             <div class="footer-section">
-                <h3>{{footer_brand}}</h3>
-                <p>{{footer_tagline}}</p>
+                <a href="#hero" class="footer-logo-link">
+                    <img src="images/logo.svg" alt="{{footer_brand}}" class="footer-logo">
+                </a>
+                <p class="footer-tagline">{{footer_tagline}}</p>
             </div>
             
             <div class="footer-section">
@@ -26,14 +28,14 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; <span id="current-year"></span> {{footer_copyright}}</p>
+            <p><span id="current-year"></span> &copy; {{footer_copyright}}</p>
         </div>
     </div>
 </footer>
 
 <style>
 .footer {
-    background-color: var(--color-grey-dark);
+    background-color: var(--color-primary-dark);
     color: var(--color-white);
     padding: var(--spacing-xl) 0 var(--spacing-md);
 }
@@ -45,20 +47,27 @@
     margin-bottom: var(--spacing-lg);
 }
 
-.footer-section h3 {
-    color: var(--color-white);
+.footer-logo-link {
+    display: inline-block;
     margin-bottom: var(--spacing-sm);
+}
+
+.footer-logo {
+    height: 36px;
+    width: auto;
+    display: block;
+    filter: brightness(0) invert(1);
+}
+
+.footer-tagline {
+    color: var(--color-white);
+    margin: 0;
 }
 
 .footer-section h4 {
     color: var(--color-white);
     font-size: var(--font-size-lg);
     margin-bottom: var(--spacing-sm);
-}
-
-.footer-section p {
-    color: var(--color-secondary-light);
-    margin-bottom: 0;
 }
 
 .footer-links {
@@ -71,22 +80,22 @@
 }
 
 .footer-links a {
-    color: var(--color-secondary-light);
+    color: var(--color-white);
     transition: color 0.2s ease;
 }
 
 .footer-links a:hover {
-    color: var(--color-white);
+    color: var(--color-primary);
 }
 
 .footer-bottom {
     text-align: center;
     padding-top: var(--spacing-md);
-    border-top: 1px solid var(--color-secondary-dark);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .footer-bottom p {
-    color: var(--color-secondary-light);
+    color: var(--color-white);
     margin: 0;
 }
 
@@ -99,11 +108,11 @@
 </style>
 
 <script>
-// Set current year in footer
-document.addEventListener('DOMContentLoaded', () => {
+// Set current year in footer (run immediately; footer is already in DOM when this script runs)
+(function() {
     const yearElement = document.getElementById('current-year');
     if (yearElement) {
         yearElement.textContent = new Date().getFullYear();
     }
-});
+})();
 </script>

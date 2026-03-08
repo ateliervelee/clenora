@@ -2,7 +2,10 @@
     <div class="container">
         <nav class="nav">
             <div class="nav-brand">
-                <a href="#hero">{{header_brand}}</a>
+                <a href="#hero">
+                    <img src="images/logo.svg" alt="{{header_brand}}" class="nav-brand-logo" onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">
+                    <span class="nav-brand-text">{{header_brand}}</span>
+                </a>
             </div>
             <div class="nav-links">
                 <a href="#services">{{header_services}}</a>
@@ -31,10 +34,22 @@
 }
 
 .nav-brand a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.nav-brand-logo {
+    height: 40px;
+    width: auto;
+    display: block;
+}
+
+.nav-brand-text {
+    display: none;
     font-size: var(--font-size-2xl);
     font-weight: 700;
     color: var(--color-primary);
-    text-decoration: none;
 }
 
 .nav-links {

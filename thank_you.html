@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Hvala što ste kontaktirali Clenoru - Profesionalno čišćenje stanova.">
     <title>Hvala vam - Clenora</title>
+    <link rel="icon" type="image/x-icon" href="images/flavicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/flavicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/flavicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/flavicon/apple-touch-icon.png">
+    <link rel="manifest" href="images/flavicon/site.webmanifest">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -35,6 +40,7 @@
 
     <!-- Footer will be loaded here -->
     <div id="footer-container"></div>
+    <div id="whatsapp-float-container"></div>
 
     <!-- Locale: strings.js = English, strings-hr.js = Croatian -->
     <script src="strings-hr.js"></script>
@@ -68,12 +74,16 @@
             
             await Promise.all([
                 loadComponent('header-container', 'components/header.html'),
-                loadComponent('footer-container', 'components/footer.html')
+                loadComponent('footer-container', 'components/footer.html'),
+                loadComponent('whatsapp-float-container', 'components/whatsapp-float.html')
             ]);
             // Replace {{key}} in static thank-you content
             if (typeof replacePlaceholdersInNode === 'function') {
                 replacePlaceholdersInNode(document.body);
             }
+            // Set footer year
+            const yearEl = document.getElementById('current-year');
+            if (yearEl) yearEl.textContent = new Date().getFullYear();
         });
     </script>
 </body>

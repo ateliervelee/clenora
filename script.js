@@ -77,11 +77,15 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'benefits-container', path: 'components/benefits.html' },
         { id: 'how-it-works-container', path: 'components/how-it-works.html' },
         { id: 'contact-container', path: 'components/contact.html' },
-        { id: 'footer-container', path: 'components/footer.html' }
+        { id: 'footer-container', path: 'components/footer.html' },
+        { id: 'whatsapp-float-container', path: 'components/whatsapp-float.html' }
     ];
     
-    // Load all components in parallel
-    Promise.all(components.map(comp => loadComponent(comp.id, comp.path)));
+    // Load all components in parallel, then set footer year
+    Promise.all(components.map(comp => loadComponent(comp.id, comp.path))).then(() => {
+        const yearEl = document.getElementById('current-year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+    });
 });
 
 // Smooth scroll for anchor links
