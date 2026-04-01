@@ -60,6 +60,15 @@ const STRINGS = {
     how_step3_title: 'Enjoy',
     how_step3_desc: "Relax in your spotless apartment. We guarantee satisfaction, or we'll come back to make it right.",
 
+    // Price calculator
+    calc_title: 'Price calculator',
+    calc_subtitle: 'Approximate price estimate in euros for your space',
+    calc_info: 'Rates start at €15 per hour (e.g. 50 m² ≈ 3 h ≈ €45). The minimum service charge is €30.',
+    calc_m2_label: 'Surface area (m²)',
+    calc_hours_label: 'Estimated duration',
+    calc_price_label: 'Estimated price',
+    calc_disclaimer: 'This is an approximate estimate. Final price depends on the condition of the space and agreement.',
+
     // Contact
     contact_title: 'Get Your Free Quote',
     contact_subtitle: 'Contact us today to schedule your cleaning service',

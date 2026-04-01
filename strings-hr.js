@@ -60,6 +60,15 @@ const STRINGS = {
     how_step3_title: 'Uživajte',
     how_step3_desc: 'Opustite se u besprijekorno čistom stanu. Jamčimo zadovoljstvo ili ćemo se vratiti i ispraviti.',
 
+    // Price calculator
+    calc_title: 'Kalkulator',
+    calc_subtitle: 'Procjena cijene u eurima za Vaš prostor',
+    calc_info: 'Cijene počinju od 15 € po satu (npr. 50 m² ≈ 3 h ≈ 45 €). Minimalna cijena usluge je 30 €.',
+    calc_m2_label: 'Površina (m²)',
+    calc_hours_label: 'Procijenjeno trajanje',
+    calc_price_label: 'Procijenjena cijena',
+    calc_disclaimer: 'Ovo je okvirna procjena. Konačna cijena ovisi o stanju prostora i dogovoru.',
+
     // Contact
     contact_title: 'Zatražite besplatnu ponudu',
     contact_subtitle: 'Kontaktirajte nas danas kako biste zakazali čišćenje',
