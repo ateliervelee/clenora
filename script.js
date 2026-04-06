@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: 'services-container', path: 'components/services.html' },
         { id: 'benefits-container', path: 'components/benefits.html' },
         { id: 'how-it-works-container', path: 'components/how-it-works.html' },
-        { id: 'price-calculator-container', path: 'components/price-calculator.html' },
+        { id: 'quotes-container', path: 'components/quotes.html' },
         { id: 'contact-container', path: 'components/contact.html' },
         { id: 'footer-container', path: 'components/footer.html' },
         { id: 'whatsapp-float-container', path: 'components/whatsapp-float.html' }

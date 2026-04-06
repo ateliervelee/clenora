@@ -62,14 +62,69 @@ const STRINGS = {
     how_step3_title: 'Uživajte',
     how_step3_desc: 'Opustite se u besprijekorno čistom stanu. Jamčimo zadovoljstvo ili ćemo se vratiti i ispraviti.',
 
-    // Price calculator
-    calc_title: 'Kalkulator',
-    calc_subtitle: 'Procjena cijene u eurima za Vaš prostor',
-    calc_info: 'Cijene počinju od 15 € po satu (npr. 50 m² ≈ 3 h ≈ 45 €). Minimalna cijena usluge je 30 €.',
-    calc_m2_label: 'Površina (m²)',
-    calc_hours_label: 'Procijenjeno trajanje',
-    calc_price_label: 'Procijenjena cijena',
-    calc_disclaimer: 'Ovo je okvirna procjena. Konačna cijena ovisi o stanju prostora i dogovoru.',
+    // Quotes (UI id: quotes — Croatian copy)
+    quotes_title: 'Cjenik',
+    quotes_subtitle: 'Odaberite kategoriju prostora',
+    quotes_tab_home: 'Dom',
+    quotes_tab_apartments: 'Apartmani',
+    quotes_tab_villas: 'Vile',
+    quotes_tab_offices: 'Uredi',
+    quotes_tab_stairwell: 'Stubišta',
+
+    quotes_home_body: `<h3 class="quote-heading">Redovno čišćenje stanova</h3>
+<div class="quote-table-wrap"><table class="quote-table">
+<thead><tr><th>Veličina stana</th><th>Cijena po čišćenju</th></tr></thead>
+<tbody>
+<tr><td>do 40 m²</td><td>40 – 50 €</td></tr>
+<tr><td>40 – 60 m²</td><td>50 – 65 €</td></tr>
+<tr><td>60 – 80 m²</td><td>65 – 80 €</td></tr>
+<tr><td>80 – 100 m²</td><td>80 – 95 €</td></tr>
+<tr><td>100 – 120 m²</td><td>95 – 110 €</td></tr>
+<tr><td>120+ m²</td><td>110 – 150 €</td></tr>
+</tbody>
+</table></div>`,
+
+    quotes_apartments_body: `<h3 class="quote-heading">Apartmani</h3>
+<div class="quote-table-wrap"><table class="quote-table">
+<tbody>
+<tr><td>Studio</td><td>50 €</td></tr>
+<tr><td>40 – 60 m²</td><td>65 €</td></tr>
+<tr><td>60 – 80 m²</td><td>80 €</td></tr>
+<tr><td>80 – 100 m²</td><td>95 €</td></tr>
+<tr><td>100+ m²</td><td>110 €</td></tr>
+</tbody>
+</table></div>`,
+
+    quotes_villas_body: `<h3 class="quote-heading">Vile</h3>
+<div class="quote-table-wrap"><table class="quote-table">
+<tbody>
+<tr><td>Manja</td><td>180 €</td></tr>
+<tr><td>Srednja</td><td>220 €</td></tr>
+<tr><td>Luksuzna</td><td>260 – 320 €</td></tr>
+</tbody>
+</table></div>
+<ul class="quote-extras">
+<li>Dodatno naplaćivanje: 3+ kupaonice, terase</li>
+<li>Dodatno naplaćivanje: kasniji checkout</li>
+<li>Dodatno naplaćivanje: izvanredno čišćenje (čišćenje isti dan)</li>
+</ul>`,
+
+    quotes_offices_body: `<h3 class="quote-heading">Uredi</h3>
+<ul class="quote-list">
+<li>Redovno čišćenje ureda — <strong>20 € / sat</strong></li>
+<li>Generalno čišćenje ureda — <strong>25 € / sat</strong></li>
+</ul>`,
+
+    quotes_stairwell_body: `<h3 class="quote-heading">Stubišta</h3>
+<div class="quote-table-wrap"><table class="quote-table">
+<tbody>
+<tr><td>do 3 kata</td><td>30 €</td></tr>
+<tr><td>4 – 5 katova</td><td>50 €</td></tr>
+<tr><td>6 – 8 katova</td><td>70 €</td></tr>
+<tr><td>9 i više</td><td>po dogovoru</td></tr>
+</tbody>
+</table></div>
+<p class="quote-note">Mjesečno održavanje: <strong>90 – 260 €</strong></p>`,
 
     // Contact
     contact_title: 'Zatražite besplatnu ponudu',

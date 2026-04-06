@@ -62,14 +62,69 @@ const STRINGS = {
     how_step3_title: 'Enjoy',
     how_step3_desc: "Relax in your spotless apartment. We guarantee satisfaction, or we'll come back to make it right.",
 
-    // Price calculator
-    calc_title: 'Price calculator',
-    calc_subtitle: 'Approximate price estimate in euros for your space',
-    calc_info: 'Rates start at €15 per hour (e.g. 50 m² ≈ 3 h ≈ €45). The minimum service charge is €30.',
-    calc_m2_label: 'Surface area (m²)',
-    calc_hours_label: 'Estimated duration',
-    calc_price_label: 'Estimated price',
-    calc_disclaimer: 'This is an approximate estimate. Final price depends on the condition of the space and agreement.',
+    // Quotes (component ids in English; Croatian text in strings-hr.js)
+    quotes_title: 'Quotes',
+    quotes_subtitle: 'Choose a space category',
+    quotes_tab_home: 'Home',
+    quotes_tab_apartments: 'Apartments',
+    quotes_tab_villas: 'Villas',
+    quotes_tab_offices: 'Offices',
+    quotes_tab_stairwell: 'Stairwell',
+
+    quotes_home_body: `<h3 class="quote-heading">Regular home cleaning</h3>
+<div class="quote-table-wrap"><table class="quote-table">
+<thead><tr><th>Flat size</th><th>Price per clean</th></tr></thead>
+<tbody>
+<tr><td>up to 40 m²</td><td>40 – 50 €</td></tr>
+<tr><td>40 – 60 m²</td><td>50 – 65 €</td></tr>
+<tr><td>60 – 80 m²</td><td>65 – 80 €</td></tr>
+<tr><td>80 – 100 m²</td><td>80 – 95 €</td></tr>
+<tr><td>100 – 120 m²</td><td>95 – 110 €</td></tr>
+<tr><td>120+ m²</td><td>110 – 150 €</td></tr>
+</tbody>
+</table></div>`,
+
+    quotes_apartments_body: `<h3 class="quote-heading">Apartments</h3>
+<div class="quote-table-wrap"><table class="quote-table">
+<tbody>
+<tr><td>Studio</td><td>50 €</td></tr>
+<tr><td>40 – 60 m²</td><td>65 €</td></tr>
+<tr><td>60 – 80 m²</td><td>80 €</td></tr>
+<tr><td>80 – 100 m²</td><td>95 €</td></tr>
+<tr><td>100+ m²</td><td>110 €</td></tr>
+</tbody>
+</table></div>`,
+
+    quotes_villas_body: `<h3 class="quote-heading">Villas</h3>
+<div class="quote-table-wrap"><table class="quote-table">
+<tbody>
+<tr><td>Smaller</td><td>180 €</td></tr>
+<tr><td>Medium</td><td>220 €</td></tr>
+<tr><td>Luxury</td><td>260 – 320 €</td></tr>
+</tbody>
+</table></div>
+<ul class="quote-extras">
+<li>Extra charge: 3+ bathrooms, terraces</li>
+<li>Extra charge: late checkout</li>
+<li>Extra charge: same-day / emergency cleaning</li>
+</ul>`,
+
+    quotes_offices_body: `<h3 class="quote-heading">Offices</h3>
+<ul class="quote-list">
+<li>Regular office cleaning — <strong>20 € / hour</strong></li>
+<li>Deep / general office cleaning — <strong>25 € / hour</strong></li>
+</ul>`,
+
+    quotes_stairwell_body: `<h3 class="quote-heading">Stairwells</h3>
+<div class="quote-table-wrap"><table class="quote-table">
+<tbody>
+<tr><td>up to 3 floors</td><td>30 €</td></tr>
+<tr><td>4 – 5 floors</td><td>50 €</td></tr>
+<tr><td>6 – 8 floors</td><td>70 €</td></tr>
+<tr><td>9 and above</td><td>on request</td></tr>
+</tbody>
+</table></div>
+<p class="quote-note">Monthly maintenance: <strong>90 – 260 €</strong></p>`,
 
     // Contact
     contact_title: 'Get Your Free Quote',
