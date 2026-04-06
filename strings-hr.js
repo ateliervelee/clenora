@@ -11,15 +11,17 @@ const STRINGS = {
     header_get_quote: 'Zatraži ponudu',
 
     // Hero
-    hero_title: 'Profesionalno čišćenje stanova',
-    hero_subtitle: 'Pouzdane, ekološki prihvatljive usluge čišćenja za vaš dom. Vaš prostor ostaje besprijekoran, da se možete fokusirati ono što je važno.',
+    hero_title: 'Profesionalno čišćenje prostora',
+    hero_subtitle: 'Pouzdane, povoljne, ekološki prihvatljive usluge čišćenja za vaš prostor',
     hero_book_now: 'Rezerviraj',
     hero_our_services: 'Naše usluge',
 
     // Services
     services_title: 'Naše usluge',
     services_subtitle: 'Sveobuhvatna čišćenja prilagođena vašim potrebama',
-    services_apartment_title: 'Čišćenje stana',
+    services_home_title: 'Stambeni prostori',
+    services_home_desc: 'Vaš dom zaslužuje pažnju. Donosimo čistoću, svježinu i osjećaj ugode u svaki prostor.',
+    services_apartment_title: 'Apartmani & vile',
     services_apartment_desc: 'Dolaze vam gosti i trebate da sve blista? Pokriveni ste pouzdanim čišćenjem koje će vaše goste dočekati kao kod kuće.',
     services_deep_title: 'Dubinsko čišćenje',
     services_deep_desc: 'Temeljito čišćenje svakog kuta, uključujući teško dostupna mjesta, podnožnice i uređaje.',
@@ -29,10 +31,10 @@ const STRINGS = {
     services_move_desc: 'Kompletna usluga čišćenja kada se useljavate ili iseljavate iz stana.',
     services_window_title: 'Čišćenje prozora',
     services_window_desc: 'Blistavi prozori iznutra i izvana za svjetliji životni prostor.',
-    services_kitchen_title: 'Dubinsko čišćenje kuhinje',
-    services_kitchen_desc: 'Detaljno čišćenje uređaja, ormarića, radnih ploča i svih površina u kuhinji.',
-    services_bathroom_title: 'Sanitacija kupaonice',
-    services_bathroom_desc: 'Potpuna sanitacija i čišćenje svih instalacija i površina u kupaonici.',
+    services_office_title: 'Uredski prostori',
+    services_office_desc: 'Čist ured je produktivan ured. Osiguravamo uredan, svjež i higijenski prostor u kojem se vaš tim može fokusirati na ono što je zaista važno.',
+    services_building_title: 'Odžavanje stubišta',
+    services_building_desc: 'Potpuna sanitacija i čišćenje cjelokupne površine stubišta i prostora oko njega.',
 
     // Benefits
     benefits_title: 'Zašto odabrati Clenoru?',
@@ -85,7 +87,7 @@ const STRINGS = {
     form_message_placeholder: 'Recite nam što vam treba...',
     form_submit: 'Pošalji upit',
     form_service_placeholder: 'Odaberite uslugu',
-    form_option_apartment: 'Čišćenje stana',
+    form_option_apartment: 'Čišćenje doma',
     form_option_deep: 'Dubinsko čišćenje',
     form_option_regular: 'Redovito održavanje',
     form_option_move: 'Čišćenje pri useljenju/iseljenju',
