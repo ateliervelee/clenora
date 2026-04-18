@@ -8,6 +8,7 @@ const STRINGS = {
     header_services: 'Services',
     header_why_us: 'Why Us',
     header_how_it_works: 'How It Works',
+    header_cjenik: 'Pricing',
     header_get_quote: 'Get Quote',
 
     // Hero
@@ -141,14 +142,12 @@ const STRINGS = {
     form_message_label: 'Message',
     form_message_placeholder: 'Tell us about your cleaning needs...',
     form_submit: 'Send Request',
-    form_service_placeholder: 'Select a service',
-    form_option_apartment: 'Home cleaning',
-    form_option_deep: 'Deep Cleaning',
-    form_option_regular: 'Regular Maintenance',
-    form_option_move: 'Move-In/Out Cleaning',
-    form_option_window: 'Window Cleaning',
-    form_option_kitchen: 'Kitchen Deep Clean',
-    form_option_bathroom: 'Bathroom Sanitization',
+    form_service_placeholder: 'Select a type',
+    form_option_home: 'Flat',
+    form_option_apartment: 'Apartment',
+    form_option_villa: 'Villa',
+    form_option_office: 'Office',
+    form_option_stairwell: 'Stairwell',
     form_option_other: 'Other',
     contact_form_subject: 'New contact form submission from Clenora website',
 

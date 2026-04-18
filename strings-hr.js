@@ -8,6 +8,7 @@ const STRINGS = {
     header_services: 'Usluge',
     header_why_us: 'Zašto mi',
     header_how_it_works: 'Kako funkcionira',
+    header_cjenik: 'Cjenik',
     header_get_quote: 'Zatraži ponudu',
 
     // Hero
@@ -141,14 +142,12 @@ const STRINGS = {
     form_message_label: 'Poruka',
     form_message_placeholder: 'Recite nam što vam treba...',
     form_submit: 'Pošalji upit',
-    form_service_placeholder: 'Odaberite uslugu',
-    form_option_apartment: 'Čišćenje doma',
-    form_option_deep: 'Dubinsko čišćenje',
-    form_option_regular: 'Redovito održavanje',
-    form_option_move: 'Čišćenje pri useljenju/iseljenju',
-    form_option_window: 'Čišćenje prozora',
-    form_option_kitchen: 'Dubinsko čišćenje kuhinje',
-    form_option_bathroom: 'Sanitacija kupaonice',
+    form_service_placeholder: 'Odaberite vrstu čišćenja',
+    form_option_home: 'Stan',
+    form_option_apartment: 'Apartman',
+    form_option_villa: 'Vila',
+    form_option_office: 'Ured',
+    form_option_stairwell: 'Stubište',
     form_option_other: 'Ostalo',
     contact_form_subject: 'Nova poruka s web stranice Clenora',
 
