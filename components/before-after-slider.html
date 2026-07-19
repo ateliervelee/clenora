@@ -1,0 +1,259 @@
+<!--
+  Reusable before/after image slider.
+  Usage: place a mount element with data attributes, then call:
+    mountBeforeAfterSlider(el)
+  or:
+    initBeforeAfterSliders(root)
+
+  Mount attributes:
+    data-before, data-after (required)
+    data-before-label, data-after-label, data-alt, data-start (optional)
+-->
+<style>
+.ba-slider {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    aspect-ratio: 3 / 4;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    user-select: none;
+    touch-action: none;
+    box-shadow: var(--shadow-lg);
+    background: var(--color-grey-medium);
+}
+
+.ba-slider__img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    pointer-events: none;
+    display: block;
+}
+
+.ba-slider__before-wrap {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 50%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.ba-slider__before-wrap .ba-slider__img {
+    width: var(--ba-full-width, 100%);
+    max-width: none;
+}
+
+.ba-slider__handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    z-index: 3;
+    width: 2px;
+    margin-left: -1px;
+    background: var(--color-white);
+    pointer-events: none;
+}
+
+.ba-slider__handle-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--color-white);
+    box-shadow: var(--shadow-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary-dark);
+}
+
+.ba-slider__handle-btn svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+}
+
+.ba-slider__label {
+    position: absolute;
+    top: var(--spacing-sm);
+    z-index: 2;
+    padding: 0.35rem 0.7rem;
+    border-radius: var(--radius-sm);
+    background: rgba(17, 24, 39, 0.65);
+    color: var(--color-white);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    pointer-events: none;
+}
+
+.ba-slider__label--before {
+    left: var(--spacing-sm);
+}
+
+.ba-slider__label--after {
+    right: var(--spacing-sm);
+}
+
+.ba-slider__range {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: ew-resize;
+    appearance: none;
+    -webkit-appearance: none;
+}
+
+.ba-slider:focus-within .ba-slider__handle-btn {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+    .ba-slider {
+        max-width: 100%;
+    }
+}
+</style>
+
+<script>
+(function () {
+    if (window.mountBeforeAfterSlider) return;
+
+    var HANDLE_SVG =
+        '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">' +
+        '<path fill="currentColor" d="M8.12 12l3.54-3.54-.7-.7L6.7 12l4.26 4.24.7-.7L8.12 12zm7.76 0l-3.54 3.54.7.7L17.3 12l-4.26-4.24-.7.7L15.88 12z"/>' +
+        '</svg>';
+
+    function clamp(value, min, max) {
+        return Math.min(max, Math.max(min, value));
+    }
+
+    function setPosition(root, percent) {
+        var p = clamp(percent, 0, 100);
+        var beforeWrap = root.querySelector('.ba-slider__before-wrap');
+        var handle = root.querySelector('.ba-slider__handle');
+        var range = root.querySelector('.ba-slider__range');
+        if (beforeWrap) beforeWrap.style.width = p + '%';
+        if (handle) handle.style.left = p + '%';
+        if (range && Number(range.value) !== p) range.value = String(Math.round(p));
+    }
+
+    function syncBeforeImageWidth(root) {
+        root.style.setProperty('--ba-full-width', root.clientWidth + 'px');
+    }
+
+    function buildSlider(options) {
+        var before = options.before || '';
+        var after = options.after || '';
+        var beforeLabel = options.beforeLabel || 'Before';
+        var afterLabel = options.afterLabel || 'After';
+        var alt = options.alt || '';
+        var start = options.start != null && !isNaN(options.start) ? options.start : 50;
+
+        var root = document.createElement('div');
+        root.className = 'ba-slider';
+        root.setAttribute('role', 'group');
+        root.setAttribute('aria-label', alt || (beforeLabel + ' / ' + afterLabel));
+
+        root.innerHTML =
+            '<img class="ba-slider__img" src="' + after + '" alt="' + alt + '" draggable="false">' +
+            '<div class="ba-slider__before-wrap">' +
+            '<img class="ba-slider__img" src="' + before + '" alt="" draggable="false">' +
+            '</div>' +
+            '<span class="ba-slider__label ba-slider__label--before">' + beforeLabel + '</span>' +
+            '<span class="ba-slider__label ba-slider__label--after">' + afterLabel + '</span>' +
+            '<input class="ba-slider__range" type="range" min="0" max="100" value="' + start + '" aria-label="' + beforeLabel + ' / ' + afterLabel + '">' +
+            '<div class="ba-slider__handle" aria-hidden="true">' +
+            '<div class="ba-slider__handle-btn">' + HANDLE_SVG + '</div>' +
+            '</div>';
+
+        var range = root.querySelector('.ba-slider__range');
+
+        function updateFromClientX(clientX) {
+            var rect = root.getBoundingClientRect();
+            if (!rect.width) return;
+            setPosition(root, ((clientX - rect.left) / rect.width) * 100);
+        }
+
+        range.addEventListener('input', function () {
+            setPosition(root, Number(range.value));
+        });
+
+        root.addEventListener('pointerdown', function (e) {
+            if (e.button != null && e.button !== 0) return;
+            root.setPointerCapture(e.pointerId);
+            updateFromClientX(e.clientX);
+        });
+
+        root.addEventListener('pointermove', function (e) {
+            if (!root.hasPointerCapture(e.pointerId)) return;
+            updateFromClientX(e.clientX);
+        });
+
+        root.addEventListener('pointerup', function (e) {
+            if (root.hasPointerCapture(e.pointerId)) {
+                root.releasePointerCapture(e.pointerId);
+            }
+        });
+
+        setPosition(root, start);
+
+        requestAnimationFrame(function () {
+            syncBeforeImageWidth(root);
+        });
+
+        if (typeof ResizeObserver !== 'undefined') {
+            new ResizeObserver(function () {
+                syncBeforeImageWidth(root);
+            }).observe(root);
+        } else {
+            window.addEventListener('resize', function () {
+                syncBeforeImageWidth(root);
+            });
+        }
+
+        return root;
+    }
+
+    window.mountBeforeAfterSlider = function (container) {
+        if (!container || container.dataset.baMounted === 'true') return null;
+
+        var slider = buildSlider({
+            before: container.getAttribute('data-before'),
+            after: container.getAttribute('data-after'),
+            beforeLabel: container.getAttribute('data-before-label'),
+            afterLabel: container.getAttribute('data-after-label'),
+            alt: container.getAttribute('data-alt'),
+            start: container.hasAttribute('data-start')
+                ? Number(container.getAttribute('data-start'))
+                : 50
+        });
+
+        container.innerHTML = '';
+        container.appendChild(slider);
+        container.dataset.baMounted = 'true';
+        return slider;
+    };
+
+    window.initBeforeAfterSliders = function (root) {
+        var scope = root || document;
+        scope.querySelectorAll('[data-ba-slider]').forEach(function (el) {
+            window.mountBeforeAfterSlider(el);
+        });
+    };
+})();
+</script>

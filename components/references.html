@@ -1,0 +1,76 @@
+<section id="references" class="section references">
+    <div class="container">
+        <h2 class="section-title">{{references_title}}</h2>
+        <p class="section-subtitle">{{references_subtitle}}</p>
+
+        <div
+            class="references-slider"
+            data-ba-slider
+            data-before="images/references/img-shower-cleaning-one-before.jpeg"
+            data-after="images/references/img-shower-cleaning-one-after.png"
+            data-before-label="{{ba_label_before}}"
+            data-after-label="{{ba_label_after}}"
+            data-alt="{{references_shower_alt}}"
+            data-start="50">
+        </div>
+    </div>
+</section>
+
+<style>
+.references {
+    background-color: var(--color-white);
+}
+
+.references-slider {
+    max-width: 520px;
+    margin: 0 auto;
+}
+</style>
+
+<script>
+(function () {
+    function ensureSliderAssets() {
+        if (typeof window.mountBeforeAfterSlider === 'function') {
+            return Promise.resolve();
+        }
+
+        return fetch('components/before-after-slider.html')
+            .then(function (response) {
+                if (!response.ok) throw new Error('Failed to load before-after-slider');
+                return response.text();
+            })
+            .then(function (html) {
+                var wrap = document.createElement('div');
+                wrap.style.display = 'none';
+                wrap.innerHTML = html;
+                document.body.appendChild(wrap);
+
+                wrap.querySelectorAll('style').forEach(function (style) {
+                    if (!document.getElementById('ba-slider-styles')) {
+                        style.id = 'ba-slider-styles';
+                        document.head.appendChild(style);
+                    }
+                });
+
+                wrap.querySelectorAll('script').forEach(function (oldScript) {
+                    var script = document.createElement('script');
+                    script.textContent = oldScript.textContent;
+                    document.body.appendChild(script);
+                    oldScript.remove();
+                });
+
+                wrap.remove();
+            });
+    }
+
+    ensureSliderAssets()
+        .then(function () {
+            if (typeof window.initBeforeAfterSliders === 'function') {
+                window.initBeforeAfterSliders(document.getElementById('references'));
+            }
+        })
+        .catch(function (err) {
+            console.error(err);
+        });
+})();
+</script>

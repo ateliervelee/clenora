@@ -17,6 +17,15 @@ const STRINGS = {
     hero_book_now: 'Book Now',
     hero_our_services: 'Our Services',
 
+    // Before / after slider
+    ba_label_before: 'Before',
+    ba_label_after: 'After',
+
+    // References
+    references_title: 'Our results',
+    references_subtitle: 'Drag the slider to see the difference professional cleaning makes',
+    references_shower_alt: 'Before and after shower faucet cleaning',
+
     // Services
     services_title: 'Our Services',
     services_subtitle: 'Comprehensive cleaning solutions tailored to your needs',

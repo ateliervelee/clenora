@@ -17,6 +17,15 @@ const STRINGS = {
     hero_book_now: 'Rezerviraj',
     hero_our_services: 'Naše usluge',
 
+    // Before / after slider
+    ba_label_before: 'Prije',
+    ba_label_after: 'Poslije',
+
+    // References
+    references_title: 'Naši rezultati',
+    references_subtitle: 'Povucite klizač i pogledajte razliku koju donosi profesionalno čišćenje',
+    references_shower_alt: 'Prije i poslije čišćenja tuš baterije',
+
     // Services
     services_title: 'Naše usluge',
     services_subtitle: 'Sveobuhvatna čišćenja prilagođena vašim potrebama',

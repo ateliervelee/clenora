@@ -73,8 +73,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const components = [
         { id: 'header-container', path: 'components/header.html' },
         { id: 'hero-container', path: 'components/hero.html' },
-        { id: 'services-container', path: 'components/services.html' },
         { id: 'benefits-container', path: 'components/benefits.html' },
+        { id: 'references-container', path: 'components/references.html' },
+        { id: 'services-container', path: 'components/services.html' },
         { id: 'how-it-works-container', path: 'components/how-it-works.html' },
         { id: 'quotes-container', path: 'components/quotes.html' },
         { id: 'contact-container', path: 'components/contact.html' },
