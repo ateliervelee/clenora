@@ -23,7 +23,6 @@ const STRINGS = {
 
     // References
     references_title: 'Naši rezultati',
-    references_subtitle: 'Povucite klizač i pogledajte razliku koju donosi profesionalno čišćenje',
     references_shower_alt: 'Prije i poslije čišćenja tuš baterije',
 
     // Services

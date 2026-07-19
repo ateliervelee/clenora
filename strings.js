@@ -23,7 +23,6 @@ const STRINGS = {
 
     // References
     references_title: 'Our results',
-    references_subtitle: 'Drag the slider to see the difference professional cleaning makes',
     references_shower_alt: 'Before and after shower faucet cleaning',
 
     // Services
