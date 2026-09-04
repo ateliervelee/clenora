@@ -24,6 +24,10 @@ const STRINGS = {
     // References
     references_title: 'Naši rezultati',
     references_shower_alt: 'Prije i poslije čišćenja tuš baterije',
+    references_vinyl_alt: 'Prije i poslije čišćenja vinil poda',
+    references_window_alt: 'Prije i poslije čišćenja prozora',
+    references_prev: 'Prethodni rezultat',
+    references_next: 'Sljedeći rezultat',
 
     // Services
     services_title: 'Naše usluge',

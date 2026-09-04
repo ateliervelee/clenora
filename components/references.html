@@ -2,15 +2,53 @@
     <div class="container">
         <h2 class="section-title">{{references_title}}</h2>
 
-        <div
-            class="references-slider"
-            data-ba-slider
-            data-before="images/references/img-shower-cleaning-one-before.webp"
-            data-after="images/references/img-shower-cleaning-one-after.webp"
-            data-before-label="{{ba_label_before}}"
-            data-after-label="{{ba_label_after}}"
-            data-alt="{{references_shower_alt}}"
-            data-start="50">
+        <div class="references-carousel" data-ba-carousel>
+            <div class="references-carousel__viewport">
+                <div class="references-carousel__track">
+                    <div class="references-carousel__slide">
+                        <div
+                            data-ba-slider
+                            data-before="images/references/img-shower-cleaning-one-before.webp"
+                            data-after="images/references/img-shower-cleaning-one-after.webp"
+                            data-before-label="{{ba_label_before}}"
+                            data-after-label="{{ba_label_after}}"
+                            data-alt="{{references_shower_alt}}"
+                            data-start="50">
+                        </div>
+                    </div>
+                    <div class="references-carousel__slide">
+                        <div
+                            data-ba-slider
+                            data-before="images/references/img-vinyl-floor-one-before.webp"
+                            data-after="images/references/img-vinyl-floor-one-after.webp"
+                            data-before-label="{{ba_label_before}}"
+                            data-after-label="{{ba_label_after}}"
+                            data-alt="{{references_vinyl_alt}}"
+                            data-start="50">
+                        </div>
+                    </div>
+                    <div class="references-carousel__slide">
+                        <div
+                            data-ba-slider
+                            data-before="images/references/img-window-one-before.webp"
+                            data-after="images/references/img-window-one-after.webp"
+                            data-before-label="{{ba_label_before}}"
+                            data-after-label="{{ba_label_after}}"
+                            data-alt="{{references_window_alt}}"
+                            data-start="50">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button type="button" class="references-carousel__nav references-carousel__nav--prev" data-ba-carousel-prev aria-label="{{references_prev}}">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M15.4 7.4L14 6l-6 6 6 6 1.4-1.4-4.6-4.6z"/></svg>
+            </button>
+            <button type="button" class="references-carousel__nav references-carousel__nav--next" data-ba-carousel-next aria-label="{{references_next}}">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8.6 7.4L10 6l6 6-6 6-1.4-1.4 4.6-4.6z"/></svg>
+            </button>
+
+            <div class="references-carousel__dots" data-ba-carousel-dots role="tablist" aria-label="{{references_title}}"></div>
         </div>
     </div>
 </section>
@@ -24,9 +62,92 @@
     margin-bottom: var(--spacing-md);
 }
 
-.references-slider {
+.references-carousel {
+    position: relative;
     max-width: 520px;
     margin: 0 auto;
+}
+
+.references-carousel__viewport {
+    overflow: hidden;
+    border-radius: var(--radius-lg);
+}
+
+.references-carousel__track {
+    display: flex;
+    transition: transform 0.35s ease;
+}
+
+.references-carousel__slide {
+    flex: 0 0 100%;
+    min-width: 0;
+}
+
+.references-carousel__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: var(--color-white);
+    box-shadow: var(--shadow-md);
+    color: var(--color-primary-dark);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.references-carousel__nav svg {
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+
+.references-carousel__nav:hover {
+    color: var(--color-btn-primary);
+}
+
+.references-carousel__nav--prev {
+    left: calc(-1 * var(--spacing-md));
+}
+
+.references-carousel__nav--next {
+    right: calc(-1 * var(--spacing-md));
+}
+
+.references-carousel__dots {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-sm);
+}
+
+.references-carousel__dot {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: var(--color-grey-medium);
+    cursor: pointer;
+}
+
+.references-carousel__dot[aria-selected="true"] {
+    background: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+    .references-carousel__nav--prev {
+        left: var(--spacing-xs);
+    }
+
+    .references-carousel__nav--next {
+        right: var(--spacing-xs);
+    }
 }
 </style>
 
@@ -66,11 +187,65 @@
             });
     }
 
+    function initCarousel(carousel) {
+        var track = carousel.querySelector('.references-carousel__track');
+        var slides = Array.prototype.slice.call(carousel.querySelectorAll('.references-carousel__slide'));
+        var dotsWrap = carousel.querySelector('[data-ba-carousel-dots]');
+        var prev = carousel.querySelector('[data-ba-carousel-prev]');
+        var next = carousel.querySelector('[data-ba-carousel-next]');
+        var index = 0;
+
+        if (slides.length < 2) {
+            if (prev) prev.hidden = true;
+            if (next) next.hidden = true;
+            if (dotsWrap) dotsWrap.hidden = true;
+            return;
+        }
+
+        var dots = slides.map(function (slide, i) {
+            var dot = document.createElement('button');
+            dot.type = 'button';
+            dot.className = 'references-carousel__dot';
+            dot.setAttribute('role', 'tab');
+            dot.setAttribute('aria-label', String(i + 1));
+            dot.addEventListener('click', function () {
+                goTo(i);
+            });
+            dotsWrap.appendChild(dot);
+            return dot;
+        });
+
+        function goTo(target) {
+            index = (target + slides.length) % slides.length;
+            track.style.transform = 'translateX(' + (-index * 100) + '%)';
+            // Keep off-screen sliders out of the tab order so focus never
+            // scrolls the clipped viewport out of sync with the transform.
+            slides.forEach(function (slide, i) {
+                slide.inert = i !== index;
+            });
+            dots.forEach(function (dot, i) {
+                dot.setAttribute('aria-selected', i === index ? 'true' : 'false');
+            });
+        }
+
+        prev.addEventListener('click', function () {
+            goTo(index - 1);
+        });
+
+        next.addEventListener('click', function () {
+            goTo(index + 1);
+        });
+
+        goTo(0);
+    }
+
     ensureSliderAssets()
         .then(function () {
+            var section = document.getElementById('references');
             if (typeof window.initBeforeAfterSliders === 'function') {
-                window.initBeforeAfterSliders(document.getElementById('references'));
+                window.initBeforeAfterSliders(section);
             }
+            section.querySelectorAll('[data-ba-carousel]').forEach(initCarousel);
         })
         .catch(function (err) {
             console.error(err);

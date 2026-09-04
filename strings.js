@@ -24,6 +24,10 @@ const STRINGS = {
     // References
     references_title: 'Our results',
     references_shower_alt: 'Before and after shower faucet cleaning',
+    references_vinyl_alt: 'Before and after vinyl floor cleaning',
+    references_window_alt: 'Before and after window cleaning',
+    references_prev: 'Previous result',
+    references_next: 'Next result',
 
     // Services
     services_title: 'Our Services',
